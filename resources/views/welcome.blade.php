@@ -45,7 +45,8 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 54px;
+                color:red;
             }
 
             .links > a {
@@ -60,6 +61,19 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+            }
+
+            .testing1 {
+                background:green;
+                color:red;
+            }
+            .testing1 p {
+                color:black;
+                font-size:10px;
+            }
+            .testing1 a {
+                color:white;
+                font-size:30px;
             }
         </style>
     </head>
@@ -82,7 +96,10 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                    <object type="image/svg+xml" id="svg-resize" data="/images/Without-Slogan-Color-2.svg"></object> 
+                    <!--/kunden/543708_80337/webseiten/calculator/images/Without-Slogan-Color-2.svg -->
                 </div>
+            
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
@@ -92,6 +109,7 @@
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://byteworx.eu">Byteworx TEST TEST</a>
                 </div>
             </div>
         </div>

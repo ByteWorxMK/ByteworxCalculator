@@ -8,12 +8,11 @@
   <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>  
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <meta name="csrf-token" content="{{ csrf_token() }}">
  </head>
  <body>
   <div class="container">    
      <br />
-     <h3 align="center">Laravel 5.8 Ajax Crud - Delete or Remove Data</h3>
+     <h3 align="center">Laravel 5.8 Ajax Crud Tutorial - Delete or Remove Data</h3>
      <br />
      <div align="right">
       <button type="button" name="create_record" id="create_record" class="btn btn-success btn-sm">Create Record</button>
@@ -24,9 +23,10 @@
            <thead>
             <tr>
                 <th width="10%">Image</th>
-                <th width="35%">First Name</th>
-                <th width="35%">Last Name</th>
-                <th width="30%">Action</th>
+                <th width="25%">First Name</th>
+                <th width="25%">Last Name</th>
+                <th width="20%">Net</th>
+                <th width="20%">Action</th>
             </tr>
            </thead>
        </table>
@@ -58,6 +58,60 @@
             <label class="control-label col-md-4">Last Name : </label>
             <div class="col-md-8">
              <input type="text" name="last_name" id="last_name" class="form-control" />
+            </div>
+           </div>
+           <div class="form-group">
+            <label class="control-label col-md-4">Net Salary: </label>
+            <div class="col-md-8">
+             <input type="text" name="net_salary" id="net_salary" class="form-control" />
+            </div>
+           </div>
+           <div class="form-group">
+            <label class="control-label col-md-4">Select Profile Image : </label>
+            <div class="col-md-8">
+             <input type="file" name="image" id="image" />
+             <span id="store_image"></span>
+            </div>
+           </div>
+           <br />
+           <div class="form-group" align="center">
+            <input type="hidden" name="action" id="action" />
+            <input type="hidden" name="hidden_id" id="hidden_id" />
+            <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add" />
+           </div>
+         </form>
+        </div>
+     </div>
+    </div>
+</div>
+
+<div id="formModal1" class="modal fade" role="dialog">
+ <div class="modal-dialog">
+  <div class="modal-content">
+   <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add New Record</h4>
+        </div>
+        <div class="modal-body">
+         <span id="form_result1"></span>
+         <form method="post" id="sample_form" class="form-horizontal" enctype="multipart/form-data">
+          
+          <div class="form-group">
+            <label class="control-label col-md-4" >First Name : </label>
+            <div class="col-md-8">
+             <input type="text" name="first_name" id="first_name" class="form-control" />
+            </div>
+           </div>
+           <div class="form-group">
+            <label class="control-label col-md-4">Last Name : </label>
+            <div class="col-md-8">
+             <input type="text" name="last_name" id="last_name" class="form-control" />
+            </div>
+           </div>
+           <div class="form-group">
+            <label class="control-label col-md-4">Net Salary: </label>
+            <div class="col-md-8">
+             <input type="text" name="net_salary" id="net_salary" class="form-control" />
             </div>
            </div>
            <div class="form-group">
@@ -97,10 +151,139 @@
     </div>
 </div>
 
-<div class="random">
- 
+
+
+
+<div class="container">
   
+
+ <div id="calc">
+    <h1> Company settings <h2>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Vacation days</span>
+      <input type="number" class="form-control" aria-describedby="basic-addon1"  id="vacation_days">
+   </div>
+   <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Working days per year</span>
+      <input type="number" class="form-control" aria-describedby="basic-addon1"  id="working_days">
+   </div>
+   <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Average ilness days per year</span>
+      <input type="number" class="form-control" aria-describedby="basic-addon1"  id="sick_days">
+   </div>
+   <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Effective working days per year</span>
+      <input type="number" class="form-control" aria-describedby="basic-addon1"  id="effective_working_days">
+   </div>
+   <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Billability</span>
+      <input type="number" class="form-control" aria-describedby="basic-addon1"  id="billability">
+   </div>
+   <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Billability per year</span>
+      <input type="number" class="form-control" aria-describedby="basic-addon1"  id="billability_per_year">
+   </div>
+   
+    <h1> Employee cost Calculator </h1> 
+   <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">Net Salary</span>
+      <input type="number" class="form-control" aria-describedby="basic-addon1"  id="net">
+   </div>
+   <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Brutto Salary</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="brutto">
+    </div>
+    
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Yearly Brutto Salary</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="yearlybrut">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Yearly Net Salary</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="yearlynet">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Social cost monthyl</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="socialcostmonth">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Social cost yearly</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="socialcostyear">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Other costs</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="othercosts">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Company cost per year</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="companycostperyear">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Company cost per month</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="companycostpermonth">
+    </div>
+    
+   
+
+
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Effective cost per day</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="effective_per_day">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Effective cost per hour</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="effective_per_hour">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Effective cost per month</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="effective_per_month">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Effective cost per year</span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="effective_per_year">
+    </div>
+
+
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Min Price per hour </span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="min_per_hour">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Min Price per day </span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="min_per_day">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Min Price per month </span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="min_per_month">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1" >Min Price per year </span>
+      <input type="number" class="form-control"  aria-describedby="basic-addon1" id="min_per_year">
+    </div>
+    
+
+  
+<div id="submit"> <button type="submit" class="btn btn-primary" onClick="getSalary()">Submit</button></div>
+<div id="income">
+  
+ <div> 
+    <p id="yearlybrut" onChange="updatePrice()"> 3.	Yearly Brut Salary : 
+    <p id="yearlynet"> 4.	Yearly Net Salary : </p>
+    <p id="socialcostmonth"> 5.	Social Cost per month: </p> 
+    <p id="socialcostyear"> 6.	Social Cost per Year :  </p>
+    <p id="othercosts"> 8.	Company Other Costs  : </p>
+    <p id="companycostperyear"> 9.	Company cost per Year : </p>
+    <p id="companycostpermonth"> 10.	Company Cost per Month : </p>
+   
+</div>  
 </div>
+</div>
+</div>
+
+
+
 <script>
 $(document).ready(function(){
 
@@ -128,6 +311,10 @@ $(document).ready(function(){
     name: 'last_name'
    },
    {
+    data: 'net_salary',
+    name: 'net_salary'
+   },
+   {
     data: 'action',
     name: 'action',
     orderable: false
@@ -141,7 +328,7 @@ $(document).ready(function(){
      $('#action').val("Add");
      $('#formModal').modal('show');
  });
- 
+
  $('#sample_form').on('submit', function(event){
   event.preventDefault();
   if($('#action').val() == 'Add')
@@ -149,7 +336,7 @@ $(document).ready(function(){
    $.ajax({
     url:"{{ route('ajax-crud.store') }}",
     method:"POST",
-    data:  new FormData(this),
+    data: new FormData(this),
     contentType: false,
     cache:false,
     processData: false,
@@ -209,38 +396,6 @@ $(document).ready(function(){
      $('#form_result').html(html);
     }
    });
-//    if($('#action').val() == "join")
-//   {
-//    $.ajax({
-//     url:"{{ route('ajax-crud.joins') }}",
-//     method:"POST",
-//     data:new FormData(this),
-//     contentType: false,
-//     cache: false,
-//     processData: false,
-//     dataType:"json",
-//     success:function(data)
-//     {
-//      var html = '';
-//      if(data.errors)
-//      {
-//       html = '<div class="alert alert-danger">';
-//       for(var count = 0; count < data.errors.length; count++)
-//       {
-//        html += '<p>' + data.errors[count] + '</p>';
-//       }
-//       html += '</div>';
-//      }
-//      if(data.success)
-//      {
-//       html = '<div class="alert alert-success">' + data.success + '</div>';
-//       $('#sample_form')[0].reset();
-//       $('#store_image').html('');
-//       $('#user_table').DataTable().ajax.reload();
-//      }
-//      $('#form_result').html(html);
-//     }
-//    });
   }
  });
 
@@ -253,12 +408,33 @@ $(document).ready(function(){
    success:function(html){
     $('#first_name').val(html.data.first_name);
     $('#last_name').val(html.data.last_name);
+    $('#net_salary').val(html.data.net_salary);
     $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.image + " width='70' class='img-thumbnail' />");
     $('#store_image').append("<input type='hidden' name='hidden_image' value='"+html.data.image+"' />");
     $('#hidden_id').val(html.data.id);
     $('.modal-title').text("Edit New Record");
     $('#action_button').val("Edit");
     $('#action').val("Edit");
+    $('#formModal').modal('show');
+   }
+  })
+ });
+
+
+ 
+ $(document).on('click', '.view', function(){
+  var id = $(this).attr('id');
+  $('#form_result1').html('');
+  $.ajax({
+   url:"/ajax-crud/"+id+"/view",
+   dataType:"json",
+   success:function(html){
+    $('#first_name').val(html.data.first_name);
+    $('#last_name').val(html.data.last_name);
+    $('#net_salary').val(html.data.net_salary);
+    $('#hidden_id').val(html.data.id);
+    $('.modal-title').text("View Record");
+    
     $('#formModal').modal('show');
    }
   })
@@ -289,5 +465,95 @@ $(document).ready(function(){
 
 });
 
+/*
+function getSalary(net,brutto ) {
+   // Salary Calculator 
+   var tmp;
+   var return_first = function () {
+   
+   $.ajax({
+        'type': "GET",
+        'url': "/ajax-crud/",
+        
+        data: {
+            data: {
+                id:"1"
+            }
+        },
+        'success': function (data) {
+            tmp = $('#net_salary').val(data.data.net_salary);
+        }
+        
+    });
+        return tmp;
+       
+    }();
+    console.log(return_first);
+   nsalary=document.getElementById("net").value;
+   bsalary=document.getElementById("brutto").value;
+  
 
+        var yearlybrut = bsalary*12; 
+        var yearlynet = nsalary*12;
+        var socialcostmonth = (bsalary-nsalary);
+        var socialcostyear = socialcostmonth*12;
+        var othercosts;
+        var companycostperyear = yearlybrut+ othercosts;
+        var companycostpermonth = companycostperyear/12;
+        
+        document.getElementById("yearlybrut").innerHTML="Yearly Brut Salary : " + yearlybrut.toFixed() + " €";
+        document.getElementById("yearlynet").innerHTML="Yearly Net Salary : " + yearlynet.toFixed() + " €";
+        document.getElementById("socialcostmonth").innerHTML="Social Cost per month  " + socialcostmonth.toFixed() + " €"; 
+        document.getElementById("socialcostyear").innerHTML="Social Cost per year  " + socialcostyear.toFixed() + " €"; 
+        document.getElementById("othercosts").innerHTML="Other Costs  " + othercosts.toFixed() + " €"; 
+        document.getElementById("companycostperyear").innerHTML="Company Cost per year  " + companycostperyear.toFixed() + " €"; 
+        document.getElementById("companycostpermonth").innerHTML="Social Cost per month  " + companycostpermonth.toFixed() + " €"; 
+
+
+  
+  return neto;
+
+}*/
+$(document).ready(function(){
+    $('#sick_days').keyup(function(){
+        $('#effective_working_days').val($('#working_days').val() - $('#vacation_days').val() - $('#sick_days').val());
+    });  
+    $('#billability').keyup(function(){
+        $('#billability_per_year').val($('#effective_working_days').val() * ($('#billability').val()/100));
+    });   
+    $('#brutto').keyup(function(){
+        $('#yearlybrut').val($('#brutto').val() * 12);
+    });
+    $('#net').keyup(function(){
+        $('#yearlynet').val($('#net').val() * 12);
+    });
+    $('#brutto').keyup(function(){
+        $('#socialcostmonth').val($('#brutto').val() - $('#net').val());
+    });
+    $('#billability').keyup(function(){
+        $('#socialcostyear').val(($('#brutto').val() - ($('#net').val()))*12);
+    });
+    $('#billability').keyup(function(){
+        $('#othercosts').val($('#effective_working_days').val() * ($('#billability').val()/100));
+    });
+    $('#billability').keyup(function(){
+        $('#billability_per_year').val($('#effective_working_days').val() * ($('#billability').val()/100));
+    });
+    $('#billability').keyup(function(){
+        $('#billability_per_year').val($('#effective_working_days').val() * ($('#billability').val()/100));
+    });
+});
+
+ /*
+     tax = salary *  x ;
+     taxPersce = (tax / salary) * 100;
+
+   document.getElementById("TAX").innerHTML="TAX: " + taxPersce.toFixed() + " %"; 
+   document.getElementById("deduction").innerHTML="Tax Deduction: " + tax.toFixed() + "  ₪";
+  
+   var neto = salary - tax;
+  
+  document.getElementById("neto").innerHTML="Your Neto Salary: " + neto.toFixed() + " ₪"; 
+   */
+    
 </script>

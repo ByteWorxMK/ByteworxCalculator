@@ -25,6 +25,9 @@ class AjaxCrudController extends Controller
                         $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
                         $button .= '&nbsp;&nbsp;';
                         $button .= '<button type="button" name="join" id="'.$data->id.'" class="join btn btn-danger btn-sm">join</button>';
+                        $button .= '&nbsp;&nbsp;';
+                        $button .= '<button type="button" name="view" id="'.$data->id.'" class="view btn btn-primary btn-sm">View</button>';
+                       
                         return $button;
                     })
                     ->rawColumns(['action'])
@@ -55,7 +58,8 @@ class AjaxCrudController extends Controller
         $rules = array(
             'first_name'    =>  'required',
             'last_name'     =>  'required',
-            'image'         =>  'required|image|max:2048'
+            'image'         =>  'required|image|max:2048',
+            'net_salary'    =>  'required'
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -74,7 +78,8 @@ class AjaxCrudController extends Controller
         $form_data = array(
             'first_name'        =>  $request->first_name,
             'last_name'         =>  $request->last_name,
-            'image'             =>  $new_name
+            'image'             =>  $new_name,
+            'net_salary'        =>  $request->net_salary
         );
 
         AjaxCrud::create($form_data);
@@ -91,6 +96,7 @@ class AjaxCrudController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -126,7 +132,8 @@ class AjaxCrudController extends Controller
             $rules = array(
                 'first_name'    =>  'required',
                 'last_name'     =>  'required',
-                'image'         =>  'image|max:2048'
+                'image'         =>  'image|max:2048',
+                'net_salary'    =>  'required'
             );
             $error = Validator::make($request->all(), $rules);
             if($error->fails())
@@ -142,7 +149,8 @@ class AjaxCrudController extends Controller
             $rules = array(
                 'first_name'    =>  'required',
                 'last_name'     =>  'required',
-                'image'         =>  'image|max:2048'
+                'image'         =>  'image|max:2048',
+                'net_salary'    =>  'required'
             );
 
             $error = Validator::make($request->all(), $rules);
@@ -156,7 +164,9 @@ class AjaxCrudController extends Controller
         $form_data = array(
             'first_name'       =>   $request->first_name,
             'last_name'        =>   $request->last_name,
-            'image'            =>   $image_name
+            'image'            =>   $image_name,
+            'net_salary'        =>  $request->net_salary
+
         );
         AjaxCrud::whereId($request->hidden_id)->update($form_data);
 
@@ -177,14 +187,25 @@ class AjaxCrudController extends Controller
         $data->delete();
     }
 
-    public function joins($id)
-    {
-        $a = $_GET["last_name"];
-        $b = $_GET["first_name"];
-        $c = $a.$b; 
-        echo $c;
-    }
+    // public function joins($id)
+    // {
+    //     $a = $_GET["last_name"];
+    //     $b = $_GET["first_name"];
+    //     $c = $a.$b; 
+    //     echo $c;
+    // }
     public function echo_get_info() {
         echo get_info();
       }
+
+    public function view($id)
+    {
+        
+        if(request()->ajax())
+        {
+            $data = AjaxCrud::findOrFail($id->name);
+            return view()->json(['data' => $data]);
+        }
+    }
+       
 }

@@ -193,4 +193,15 @@ class HomeController extends Controller
         $data = AjaxCrud::findOrFail($id);
         $data->delete();
     }
+
+    public function view($id)
+    {
+        //
+        if(request()->ajax())
+        {
+            $data = AjaxCrud::findOrFail($id);
+            return response()->json(['data' => $data]);
+        }
+    }
+
 }

@@ -27,6 +27,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
+    
+    
 </head>
 <body>
     <div id="app">
@@ -58,6 +60,12 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ url('company_index') }}">Company</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ url('employee') }}">Employee</a>
+                        </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

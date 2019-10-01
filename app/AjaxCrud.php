@@ -8,6 +8,6 @@ class AjaxCrud extends Model
 {
     //
     protected $fillable = [
-        'first_name', 'last_name', 'image'
+        'first_name', 'last_name', 'image', 'net_salary'
        ];
 }
