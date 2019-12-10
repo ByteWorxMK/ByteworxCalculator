@@ -1,0 +1,225 @@
+<div class="col-xs-12">
+  
+    <div class="col-12">
+        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+            </li>
+        </ul>
+        <div class="tab-content ml-1" id="myTabContent1">
+            <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">  
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Netto Salary</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.net }} test
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Brutto Salary</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.brutto}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Netto yearly Salary:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.yearlynet}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Brutto yearly Salary:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.yearlybrut}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Social cost per month:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.socialcostmonth}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Social cost per year:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.socialcostyear}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Administrative</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.administrative}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Expenses:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.expenses}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Hardware:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.hardware}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Other costs:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.othercosts}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Company cost per year:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.companycostperyear}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Company cost per month:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.companycostpermonth}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Effective cost per hour:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.c1}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Effective cost per day:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.c2}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Effective cost per month:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.c3}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Effective cost per year:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.c4}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Min price per hour:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.p1}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Min price per day:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.p2}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Min price per month:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.p3}}
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-3 col-md-3 col-5">
+                        <label style="font-weight:bold;">Min price per year:</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                        {{ employees.p4}}
+                    </div>
+                </div>
+                <hr />
+
+
+            </div>
+
+
+           
+
+
+
+
+            
+            <div class="dropdown btn-group" >
+              <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" [ngClass]="{'show': isShow}" (click)="onToggle()" > <!-- aria-haspopup="true" aria-expanded="false"   -->
+                Manage Employee
+              </button>
+              <div class="dropdown-menu "  aria-labelledby="dropdownMenuButton" [ngClass]="{'show': isShow}" > 
+                <a class="dropdown-item" href="#" (click)="editEmployee(employeeEl)">Edit</a>
+                <a class="dropdown-item" href="#" (click)="deleteEmployee(employeeEl)">Delete</a>
+                
+              </div>
+            </div>
+
+            <!-- <div class="btn-group" appDropdown>
+                <button type="button" class="btn btn-primary dropdown-toggle"> Manage</button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">TEST</a></li>
+                    <li><a href="#">TEST2</a></li>
+                </ul>
+            </div> -->
+          
+</div>
+</div>
+</div>
+
+
