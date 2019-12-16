@@ -31,7 +31,7 @@ import { NgxCurrencyModule } from "ngx-currency";
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'companies', component: CompanyComponent },
-  { path: 'employees', component: EmployeeComponent, canActivate: [AuthGuard] },
+  { path: 'employees', component: EmployeeComponent },
   { path: 'login', component: Login2Component},
   { path: 'register', component: RegisterComponent },
   //{ path: '**', redirectTo: '', pathMatch: 'full' }

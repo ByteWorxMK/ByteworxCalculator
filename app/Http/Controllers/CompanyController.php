@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use App\CompanySettings;
+// use Illuminate\Foundation\Auth\AuthenticatesUsers;
+// use Illuminate\Http\Request;
+// use App\CompanySettings;
 use Validator;
+
+use Illuminate\Http\Request;
+
+ use App\CompanySettings;
+// use App\Http\Resources\Company as CompanyResource;
+// use App\Http\Resources\CompanyCollection;
 
 class CompanyController extends Controller
 {
 
-    use AuthenticatesUsers;
+    //use AuthenticatesUsers;
 
-    public function __construct()
-    {
-        $this->middleware('auth'); /*['auth', 'verified']) used to implement the mail verification */
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth'); /*['auth', 'verified']) used to implement the mail verification */
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -37,6 +43,7 @@ class CompanyController extends Controller
                     ->make(true);
         }
         return view('company_index');
+       //return new CompanyCollection(CompanySettings::all());
     }
 
     /**
@@ -105,6 +112,8 @@ class CompanyController extends Controller
     public function show($id)
     {
         //
+
+        return new CompanyResource(Company::findOrFail($id));
     }
 
     /**

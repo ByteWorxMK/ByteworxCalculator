@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { throwError ,Observable, from } from 'rxjs';
@@ -44,9 +45,18 @@ interface Test {
 
 const API_URL: string = 'http://localhost:8000';
 
+
+const httpOptions = {
+  headers: new HttpHeaders({
+  'Access-Control-Allow-Origin': '*'
+})
+};
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class EmployeeService /* implements Employee*/{
 
   // id: Number;
@@ -129,7 +139,7 @@ export class EmployeeService /* implements Employee*/{
 
   getEmployees(): Observable<any>{
    console.log("testh")
-    return this.http.get<any>(API_URL + '/api/employee')
+    return this.http.get<any>(API_URL + '/api/employee', httpOptions)
     .pipe(map(result=>result.data));
     //.pipe(map(data=> this.data || []));
    

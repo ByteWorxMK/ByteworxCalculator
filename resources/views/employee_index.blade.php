@@ -941,6 +941,7 @@ $(document).ready(function(){
 
   var firmi = [];
     jQuery.ajax({
+      
             type: "GET",
             url: "{{ route('company_index.index') }}",
 			datatype:'JSON',

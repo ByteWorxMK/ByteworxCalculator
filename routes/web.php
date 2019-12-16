@@ -16,10 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('/employee', function () {
-    return view('employee');
+    return view('employee_index');
 });
 
-Route::get('/company_index', function () {
+Route::get('/company', function () {
     return view('company_index');
 });
 
@@ -46,7 +46,7 @@ Route::resource('company_index', 'CompanyController');
 
 Route::post('company_index/update', 'CompanyController@update')->name('company_index.update');;
 
-Route::resource('employee', 'EmployeeController');
+Route::resource('employee', 'EmployeeController'); //->middleware('auth'); disabled for the purpose of not being able to get the data on the angular front end sisnce the user logs in the backend
 
 Route::post('employee/update', 'EmployeeController@update')->name('employee.update');
 

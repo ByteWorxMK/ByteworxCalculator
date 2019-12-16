@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, NgSelectOption } from '@angular/forms';
 import { EmployeeComponent } from '../../employee.component';
 import { EmployeeListComponent } from '../employee-list.component';
 import { CompanyService } from 'src/app/company.service';
-import { calcBindingFlags } from '@angular/core/src/view/util';
+//import { calcBindingFlags } from '@angular/core/src/view/util';
 
 
 

@@ -53,8 +53,8 @@ class EmployeeController extends Controller
     {
         //
         $rules = array(
-            'position'            =>  'required',
-            'role'                =>  'required',
+          //  'position'            =>  'required',
+         //   'role'                =>  'required',
             'first_name'          =>  'required',
             'last_name'           =>  'required',
             'net'                 =>  'required',
@@ -69,7 +69,7 @@ class EmployeeController extends Controller
             'othercosts'          =>  'required',
             'companycostperyear'  =>  'required',
             'companycostpermonth' =>  'required',
-            'image'               =>  'image|max:2048',
+          //  'image'               =>  'image|max:2048',
             'c1'                  =>  'required',
             'c2'                  =>  'required',
             'c3'                  =>  'required',
@@ -96,8 +96,8 @@ class EmployeeController extends Controller
         $image->move(public_path('images'), $new_name);
 
         $form_data = array(
-            'position'              =>  $request->position,
-            'role'                  =>  $request->role,
+         //   'position'              =>  $request->position,
+         //   'role'                  =>  $request->role,
             'first_name'            =>  $request->first_name,
             'last_name'             =>  $request->last_name,
             'net'                   =>  $request->net,
@@ -112,7 +112,7 @@ class EmployeeController extends Controller
             'othercosts'            =>  $request->othercosts,
             'companycostperyear'    =>  $request->companycostperyear,
             'companycostpermonth'   =>  $request->companycostpermonth,
-            'image'                 =>  $new_name,
+          //  'image'                 =>  $new_name,
             'c1'                    =>  $request->c1,
             'c2'                    =>  $request->c2,
             'c3'                    =>  $request->c3,
@@ -136,7 +136,7 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    { 
         //
     }
 
@@ -171,8 +171,8 @@ class EmployeeController extends Controller
         if($image != '')
         {
             $rules = array(
-                'position'            =>  'required',
-                'role'                =>  'required',
+              //  'position'            =>  'required',
+              //  'role'                =>  'required',
                 'first_name'          =>  'required',
                 'last_name'           =>  'required',
                 'net'                 =>  'required',
@@ -187,7 +187,7 @@ class EmployeeController extends Controller
                 'othercosts'          =>  'required',
                 'companycostperyear'  =>  'required',
                 'companycostpermonth' =>  'required',
-                'image'               =>  'image|max:2048',
+              //  'image'               =>  'image|max:2048',
                 'c1'                  =>  'required',
                 'c2'                  =>  'required',
                 'c3'                  =>  'required',
@@ -209,8 +209,8 @@ class EmployeeController extends Controller
         else
         {
             $rules = array(
-                'position'            =>  'required',
-                'role'                =>  'required',
+              //  'position'            =>  'required',
+              //  'role'                =>  'required',
                 'first_name'          =>  'required',
                 'last_name'           =>  'required',
                 'net'                 =>  'required',
@@ -225,7 +225,7 @@ class EmployeeController extends Controller
                 'othercosts'          =>  'required',
                 'companycostperyear'  =>  'required',
                 'companycostpermonth' =>  'required',
-                'image'               =>  'image|max:2048',
+              //  'image'               =>  'image|max:2048',
                 'c1'                  =>  'required',
                 'c2'                  =>  'required',
                 'c3'                  =>  'required',
@@ -245,8 +245,8 @@ class EmployeeController extends Controller
         }
 
         $form_data = array(
-            'position'              =>  $request->position,
-            'role'                  =>  $request->role,
+           // 'position'              =>  $request->position,
+         //   'role'                  =>  $request->role,
             'first_name'            =>  $request->first_name,
             'last_name'             =>  $request->last_name,
             'net'                   =>  $request->net,
@@ -261,7 +261,7 @@ class EmployeeController extends Controller
             'othercosts'            =>  $request->othercosts,
             'companycostperyear'    =>  $request->companycostperyear,
             'companycostpermonth'   =>  $request->companycostpermonth,
-            'image'                 =>  $image_name,
+         //   'image'                 =>  $image_name,
             'c1'                    =>  $request->c1,
             'c2'                    =>  $request->c2,
             'c3'                    =>  $request->c3,
