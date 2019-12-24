@@ -1,0 +1,21 @@
+.page-header {
+    text-align: center;
+    padding: 60px 50px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd; 
+}
+    
+
+    
+    
+#svg-resize {
+    width: 70%;
+    padding: 10px 40px;
+}
+
+/* .header-logo, .header-buttons {
+    width: 50%;
+    position: relative;
+    float: left;
+    display: inline-block;
+} */

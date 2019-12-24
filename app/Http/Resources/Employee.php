@@ -4,6 +4,9 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+use Illuminate\Support\Facades;
+use File;
+
 class Employee extends JsonResource
 {
     /**
@@ -14,6 +17,10 @@ class Employee extends JsonResource
      */
     public function toArray($request)
     {
+        
+        $contents = File::get(storage_path($this->image));
+        //echo $contents;
+        //$base64 = "OVDE SE STAVA BASE64";
         return [
         'position'              =>  $this->position,
         'role'                  =>  $this->role,
@@ -39,8 +46,12 @@ class Employee extends JsonResource
         'p1'                    =>  $this->p1,
         'p2'                    =>  $this->p2,
         'p3'                    =>  $this->p3,
-        'p4'                    =>  $this->p4
+        'p4'                    =>  $this->p4,
+        //'image'                 =>  File::get(storage_path($this->image))
+         'image'                 =>  $contents,
         ];
         
     }
 }
+
+

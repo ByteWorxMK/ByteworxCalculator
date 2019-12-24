@@ -1,15 +1,22 @@
 
 
+<app-employee-edit></app-employee-edit>
 
+<div class="container">
+    <div class="row">
+        
+            <app-employee-item
+            class="col-4"
+            *ngFor="let employeeEl of employees"
+            [employeesItem]="employeeEl"
+            (employeeSelected)="onEmployeeSelected(employeeEl)"
+           
+            
+            ></app-employee-item>
+        
+    </div>
+</div>
 
-<app-employee-item
-     
-*ngFor="let employeeEl of employees"
-[employeesItem]="employeeEl"
-(employeeSelected)="onEmployeeSelected(employeeEl)"
-
-
-></app-employee-item>
 
 
 <div class="container">
@@ -50,7 +57,7 @@
 -->
 
 
-<app-employee-edit></app-employee-edit>
+
 
 
 

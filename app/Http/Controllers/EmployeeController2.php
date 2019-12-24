@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades;
+use File;
 
 use Illuminate\Http\Request;
 
@@ -27,8 +29,8 @@ class EmployeeController2 extends Controller
     {
         //
         $request->validate([
-          //  'position'            =>  'required',
-           // 'role'                =>  'required',
+            'position'            =>  'required',
+            'role'                =>  'required',
             'first_name'          =>  'required',
             'last_name'           =>  'required',
             'net'                 =>  'required',
@@ -43,7 +45,7 @@ class EmployeeController2 extends Controller
             'othercosts'          =>  'required',
             'companycostperyear'  =>  'required',
             'companycostpermonth' =>  'required',
-           // 'image'               =>  'image|max:2048',
+            'image'               =>  'required',
             'c1'                  =>  'required',
             'c2'                  =>  'required',
             'c3'                  =>  'required',
@@ -54,7 +56,46 @@ class EmployeeController2 extends Controller
             'p4'                  =>  'required'
         ]);
 
-        $employee = Employee::create($request->all());
+
+        $new_image_data = $request->image;
+        $new_name = rand(); //. '.' . $image->getClientOriginalExtension();
+
+        //$image->move(public_path('images'), $new_name);
+
+        File::put('C:/xampp/htdocs/firstApp/storage/'.$new_name.'.txt', $new_image_data);
+        $new_name = $new_name.'.txt';
+
+
+
+        $form_data = array(
+            'position'              =>  $request->position,
+            'role'                  =>  $request->role,
+            'first_name'            =>  $request->first_name,
+            'last_name'             =>  $request->last_name,
+            'net'                   =>  $request->net,
+            'brutto'                =>  $request->brutto,
+            'yearlynet'             =>  $request->yearlynet,
+            'yearlybrut'            =>  $request->yearlybrut,
+            'socialcostmonth'       =>  $request->socialcostmonth,
+            'socialcostyear'        =>  $request->socialcostyear,
+            'administrative'        =>  $request->administrative,
+            'expenses'              =>  $request->expenses,
+            'hardware'              =>  $request->hardware,
+            'othercosts'            =>  $request->othercosts,
+            'companycostperyear'    =>  $request->companycostperyear,
+            'companycostpermonth'   =>  $request->companycostpermonth,
+            'image'                 =>  $new_name,
+            'c1'                    =>  $request->c1,
+            'c2'                    =>  $request->c2,
+            'c3'                    =>  $request->c3,
+            'c4'                    =>  $request->c4,
+            'p1'                    =>  $request->p1,
+            'p2'                    =>  $request->p2,
+            'p3'                    =>  $request->p3,
+            'p4'                    =>  $request->p4
+        );
+
+        $employee = Employee::create($form_data);
 
         return (new EmployeeResource($employee))
                 ->response()
@@ -62,8 +103,8 @@ class EmployeeController2 extends Controller
     
     }
 
-    public function delete($id) {
-        $employee = Employee::findOrFail($id);
+    public function delete($first_name) {
+        $employee = Employee::findOrFail($first_name);
         $employee->delete();
 
         return response()->json(null, 204);

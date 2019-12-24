@@ -25,109 +25,115 @@
     <div class="col-xs-12">
   
       <div class="col-md-12">
-          <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+          <!-- <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
               <li class="nav-item">
                   <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
               </li>
-          </ul>
+          </ul> -->
+          <h2 class="page-header-inner"> List of Companies</h2>
           <div class="row">
-          <div class="tab-content col-md-6" id="myTabContent1" *ngFor="let company of companies">
+          <div class="tab-content col-12" id="myTabContent1" *ngFor="let company of companies">
               <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">  
-                
-                  <hr />
-                  <div class="row">
-                      <div class="col-sm-3 col-md-3 col-5">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                 
+                  <div class="row col-12">
+                      <div class="col-6"> <!--col-6 -->
                           <label style="font-weight:bold;">Company name:</label>
                       </div>
-                      <div class="col-md-8 col-6">
+                      <div class="col-6"> <!--col-6-->
                           {{ company.company_name}}
                       </div>
                   </div>
-                  <hr />
-                  <div class="row">
-                      <div class="col-sm-3 col-md-3 col-5">
+                 
+                </mat-expansion-panel-header>
+                  <div class="row col-12">
+                      <div class="col-6">
                           <label style="font-weight:bold;">Vacation days:</label>
                       </div>
-                      <div class="col-md-8 col-6">
+                      <div class="col-6">
                           {{ company.vacation_days}}
                       </div>
                   </div>
-                  <hr />
-                  <div class="row">
-                      <div class="col-sm-3 col-md-3 col-5">
+                 
+                  <div class="row col-12">
+                      <div class="col-6">
                           <label style="font-weight:bold;">Sick days:</label>
                       </div>
-                      <div class="col-md-8 col-6">
+                      <div class="col-6">
                           {{ company.sick_days}}
                       </div>
                   </div>
-                  <hr />
-                  <div class="row">
-                      <div class="col-sm-3 col-md-3 col-5">
+                 
+                  <div class="row col-12">
+                      <div class="col-6">
                           <label style="font-weight:bold;">Working days:</label>
                       </div>
-                      <div class="col-md-8 col-6">
+                      <div class="col-6">
                           {{ company.working_days}}
                       </div>
                   </div>
-                  <hr />
-                  <div class="row">
-                      <div class="col-sm-3 col-md-3 col-5">
+                 
+                  <div class="row col-12">
+                      <div class="col-6">
                           <label style="font-weight:bold;">Billability:</label>
                       </div>
-                      <div class="col-md-8 col-6">
+                      <div class="col-6">
                           {{ company.billability}}
                       </div>
                   </div>
-                  <hr />
-                  <div class="row">
-                      <div class="col-sm-3 col-md-3 col-5">
+                 
+                  <div class="row col-12">
+                      <div class="col-6">
                           <label style="font-weight:bold;">Billability per year:</label>
                       </div>
-                      <div class="col-md-8 col-6">
+                      <div class="col-6">
                           {{ company.billability_year}}
                       </div>
                   </div>
-                  <hr />
-                  <div class="row">
-                      <div class="col-sm-3 col-md-3 col-5">
+                 
+                  <div class="row col-12">
+                      <div class="col-6">
                           <label style="font-weight:bold;">Effective days:</label>
                       </div>
-                      <div class="col-md-8 col-6">
+                      <div class="col-6">
                           {{ company.effective_days}}
                       </div>
                   </div>
-                  <hr />
-                  <div class="row">
-                      <div class="col-sm-3 col-md-3 col-5">
+                 
+                  <div class="row col-12">
+                      <div class="col-6">
                           <label style="font-weight:bold;">Expected profit:</label>
                       </div>
-                      <div class="col-md-8 col-6">
+                      <div class="col-6">
                           {{ company.expected_profit}}
                       </div>
                   </div>
-                  <hr />
-  
-  
+                 
+                  <div class="dropdown btn-group" >
+                    <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" [ngClass]="{'show': isShow}" (click)="onToggle()" > <!-- aria-haspopup="true" aria-expanded="false"   -->
+                      Manage Company
+                    </button>
+                    <div class="dropdown-menu "  aria-labelledby="dropdownMenuButton" [ngClass]="{'show': isShow}" > 
+                      <a class="dropdown-item" href="#">Edit</a>
+                      <a class="dropdown-item" href="#">Delete</a>
+                      
+                    </div>
+                  </div>
+                  
+                </mat-expansion-panel>
+                </mat-accordion>    
               </div>
   
   
              
   
-  
+              
   
   
               
-              <div class="dropdown btn-group" >
-                <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" [ngClass]="{'show': isShow}" (click)="onToggle()" > <!-- aria-haspopup="true" aria-expanded="false"   -->
-                  Manage Company
-                </button>
-                <div class="dropdown-menu "  aria-labelledby="dropdownMenuButton" [ngClass]="{'show': isShow}" > 
-                  <a class="dropdown-item" href="#">Edit</a>
-                  <a class="dropdown-item" href="#">Delete</a>
-                  
-                </div>
-              </div>
+              
   
               <!-- <div class="btn-group" appDropdown>
                   <button type="button" class="btn btn-primary dropdown-toggle"> Manage</button>
@@ -141,11 +147,16 @@
   </div>
   </div>
   
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal1">
+    Add company
+  </button>
+
+
   
-  
-<div id="formModal1"  role="dialog">
-    <div class="modal-dialog">
+ <div id="formModal1" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
      <div class="modal-content" [formGroup]="addingCompany">
+        
       <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal">&times;</button>
              <h4 class="modal-title">Add New Record</h4>
@@ -205,11 +216,143 @@
                <div class="form-group" align="center">
                 <input type="hidden" name="action" id="action" />
                 <input type="hidden" name="hidden_id" id="hidden_id" />
-                <!-- <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add" /> -->
+                 <!-- <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add" />  -->
                 <button appHighlighting class="btn" type="submit" (click)="addCompany()">Add</button>
                </div>
+               
         </form>
       </div>
      </div>
     </div>
-</div>
+</div> 
+
+
+<!-- <div>
+    <div class="add-title">
+      <h2 class="primary">Add Company</h2>
+    </div>
+    <div>
+      <form [formGroup]="addingCompany">
+        <mat-grid-list cols="2" [cols]="breakpoint" rowHeight="85px" >
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput placeholder="Company Name" value="company_name" [formControl]="addingCompany.controls['company_name']">
+                <mat-error *ngIf="addingCompany.controls.company_name.hasError('')">
+                  Please enter company name
+                </mat-error>
+                <mat-error *ngIf="addingCompany.controls.company_name.hasError('pattern')">
+                  Please enter valid company name
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput placeholder="Company Name" value="vacation_days" [formControl]="addingCompany.controls['vacation_days']">
+                <mat-error *ngIf="addingCompany.controls.vacation_days.hasError('')">
+                  Please enter company name
+                </mat-error>
+                <mat-error *ngIf="addingCompany.controls.vacation_days.hasError('pattern')">
+                  Please enter valid company name
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+      
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput placeholder="Company Name" value="sick_days" [formControl]="addingCompany.controls['sick_days']">
+                <mat-error *ngIf="addingCompany.controls.sick_days.hasError('')">
+                  Please enter company name
+                </mat-error>
+                <mat-error *ngIf="addingCompany.controls.sick_days.hasError('pattern')">
+                  Please enter valid company name
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput placeholder="Company Name" value="working_days" [formControl]="addingCompany.controls['working_days']">
+                <mat-error *ngIf="addingCompany.controls.working_days.hasError('')">
+                  Please enter company name
+                </mat-error>
+                <mat-error *ngIf="addingCompany.controls.working_days.hasError('pattern')">
+                  Please enter valid company name
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+        
+          <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput placeholder="Company Name" value="billability" [formControl]="addingCompany.controls['billability']">
+                <mat-error *ngIf="addingCompany.controls.billability.hasError('')">
+                  Please enter company name
+                </mat-error>
+                <mat-error *ngIf="addingCompany.controls.billability.hasError('pattern')">
+                  Please enter valid company name
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+         <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput placeholder="Company Name" value="billability_year" [formControl]="addingCompany.controls['billability_year']">
+                <mat-error *ngIf="addingCompany.controls.billability_year.hasError('')">
+                  Please enter company name
+                </mat-error>
+                <mat-error *ngIf="addingCompany.controls.billability_year.hasError('pattern')">
+                  Please enter valid company name
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+  
+           <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput placeholder="Company Name" value="effective_days" [formControl]="addingCompany.controls['effective_days']">
+                <mat-error *ngIf="addingCompany.controls.effective_days.hasError('')">
+                  Please enter company name
+                </mat-error>
+                <mat-error *ngIf="addingCompany.controls.effective_days.hasError('pattern')">
+                  Please enter valid company name
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+  
+           <mat-grid-tile>
+            <div class="text-inside">
+              <mat-form-field>
+                <input matInput placeholder="Company Name" value="expected_profit" [formControl]="addingCompany.controls['expected_profit']">
+                <mat-error *ngIf="addingCompany.controls.expected_profit.hasError('')">
+                  Please enter company name
+                </mat-error>
+                <mat-error *ngIf="addingCompany.controls.expected_profit.hasError('pattern')">
+                  Please enter valid company name
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+  
+        <div class="btn-sec">
+          <button mat-raised-button type="submit" color="primary" class="Update-btn" (click)="addCompany()">Save</button>
+          <button mat-raised-button type="button" class="Discard-btn" (click)="openDialog()">Cancel</button> 
+        </div>
+  
+      </form>
+    </div>
+  </div> -->
+  <!-- Button trigger modal -->
+
+
+

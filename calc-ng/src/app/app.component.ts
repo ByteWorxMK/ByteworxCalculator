@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Injectable } from '@angular/core';
 
 
 import { Employee } from './employee/employee.model';
 
 import { AuthGuard } from './_guards/auth.guard';
 
+@Injectable()
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent {
 
   loadedFeature = 'employees';
   
-  constructor( private authGuard: AuthGuard) {}
+  constructor( public authGuard: AuthGuard) {}
 
   @Input() employeeData: Employee;
 

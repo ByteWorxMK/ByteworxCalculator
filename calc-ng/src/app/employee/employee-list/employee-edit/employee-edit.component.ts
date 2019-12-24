@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ViewChild,  EventEmitter, ElementRef} from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild,  EventEmitter, ElementRef, Injectable} from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from '../../employee.model';
 import { EmployeeService } from '../../../employee.service';
@@ -6,15 +6,19 @@ import { FormGroup, FormBuilder, NgSelectOption } from '@angular/forms';
 import { EmployeeComponent } from '../../employee.component';
 import { EmployeeListComponent } from '../employee-list.component';
 import { CompanyService } from 'src/app/company.service';
+import { HttpClient } from '@angular/common/http';
 //import { calcBindingFlags } from '@angular/core/src/view/util';
 
 
-
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-employee-edit',
   templateUrl: './employee-edit.component.html',
-  styleUrls: ['./employee-edit.component.css']
+  styleUrls: ['./employee-edit.component.css'],
+  providers: [CompanyService, EmployeeService]
 })
 export class EmployeeEditComponent implements OnInit {
 
@@ -22,11 +26,15 @@ export class EmployeeEditComponent implements OnInit {
   // @ViewChild('roleInput') roleInputRef: ElementRef;
   // @ViewChild('companyInput') companyInputRef: ElementRef;
   addingEmployee: FormGroup;
-
+  image64:any;
   employee: Employee;
   filtero: any;
   employees: Employee[];
   companies:any;
+  fileData:File =null;
+  previewUrl:any = null;
+  fileUploadProgress: string = null;
+  uploadedFilePath: string = null;
 
 
   //id = this.actRoute.snapshot.params['id'];
@@ -64,9 +72,11 @@ export class EmployeeEditComponent implements OnInit {
 
   // @Input() employee = {firstNameInput: ""}
 
-  constructor(private employeeService: EmployeeService, public fb: FormBuilder, private g : EmployeeListComponent, private emp: EmployeeListComponent, private companyList: CompanyService) {
-    console.log("are they called?");
+  constructor(private employeeService: EmployeeService, public fb: FormBuilder, private g : EmployeeListComponent, private emp: EmployeeListComponent, private companyList: CompanyService, private http: HttpClient) {
+    //console.log("are they called?");
     this.addingEmployee= fb.group({
+      "position": [''],
+      "role": [''],
        "first_name": [''],
      "last_name": [''],
      "net": [''],
@@ -81,7 +91,6 @@ export class EmployeeEditComponent implements OnInit {
      "othercosts": [''],
      "companycostperyear": [''],
      "companycostpermonth": [''],
-    // image": [''],
      "c1": [''],
      "c2": [''],
      "c3": [''],
@@ -90,6 +99,7 @@ export class EmployeeEditComponent implements OnInit {
      "p2": [''],
      "p3": [''],
      "p4": [''],
+     "image": [''],
     })
     //this.init();
    }
@@ -107,6 +117,7 @@ export class EmployeeEditComponent implements OnInit {
       
     })
 
+    //console.log("Ovde slika", this.previewUrl);
   }
 
   
@@ -154,13 +165,59 @@ export class EmployeeEditComponent implements OnInit {
   //   })
   // }
 
+  
 
 
+  // public fileProgress(fileInput: any) {
+  //   this.fileData = <File>fileInput.target.files[0];
+  //   this.preview();
+   
+  // }
+
+  public preview() {
+    // Show preview 
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+ 
+    var reader = new FileReader();      
+    reader.readAsDataURL(this.fileData); 
+    reader.onload = (_event) => { 
+      this.previewUrl = reader.result; 
+    }
+  }
+
+  fileProgress(event) {
+    const file = event.target.files[0];
+   // console.log(event);
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+       // console.log("dali e base64 ? ", reader.result);
+        this.image64 = reader.result;
+    };
+   
+    return reader.result;
+    
+}
   
 
   addEmployees() {
-    console.log(this.addingEmployee.value);
+    
+   
+    // FormData.append('file', this.fileData);
+    // var formData = new FormData();
+    // formData.append('image_data', this.fileData[0]);
+   // this.image64 = this.addingEmployee.controls['image'];
+   
+  //  this.addingEmployee.controls['image'].setValue(this.image64);
+   this.employee = this.addingEmployee.value;
+   this.employee.image = this.image64;
+   //console.log(this.employee);
+    // console.log(this.addingEmployee.value);
     this.employeeService
+    
     .addEmployee(this.addingEmployee.value)
     .subscribe(employee => 
       //console.log("THIS" + employee)
@@ -175,7 +232,7 @@ export class EmployeeEditComponent implements OnInit {
 
   selected(dare){
    
-    console.log(dare);
+    //console.log(dare);
     var nesto2;
     nesto2 = this.nesto ;
 
@@ -188,12 +245,12 @@ export class EmployeeEditComponent implements OnInit {
     var kk = this.companieinfoplus.filter(function (aaa) {
       if(aaa.company_name == dare){
        // nesto2= aaa;
-        console.log(aaa);
+       // console.log(aaa);
        // this.nesto= nesto2;
         return aaa;
       }
     })
-    console.log(kk);
+   // console.log(kk);
     this.nesto=kk;
 
     //this.calc2(kk)
@@ -224,7 +281,7 @@ export class EmployeeEditComponent implements OnInit {
   }
 
 
-  calc2(nesto) {
+  calc2() {
 
     this.addingEmployee.value["othercosts"] =  ( this.addingEmployee.value["administrative"] + this.addingEmployee.value["expenses"] + ((this.addingEmployee.value["hardware"])/24) + this.emp.employees.length ) * 12 ;
    //console.log(Number(this.addingEmployee.value["administrative"]) + Number(this.addingEmployee.value["expenses"]));
@@ -269,17 +326,17 @@ export class EmployeeEditComponent implements OnInit {
     //console.log((this.nesto[0].billability_year));
   }
 
-  editEmployee() {
-    console.log(this.addingEmployee.value);
-    this.employeeService
-    .editEmployee(this.addingEmployee.value)
-    .subscribe(employee => 
-      //console.log("THIS" + employee)
-      this.g.getEmployees() + employee,
+  // editEmployee() {
+  //   console.log(this.addingEmployee.value);
+  //   this.employeeService
+  //   .editEmployee(this.addingEmployee.value)
+  //   .subscribe(employee => 
+  //     //console.log("THIS" + employee)
+  //     this.g.getEmployees() + employee,
       
-      )
-      this.addingEmployee.reset()
-      //this.employees.push(employee)
+  //     )
+  //     this.addingEmployee.reset()
+  //     //this.employees.push(employee)
       
-  }
+  // }
 }

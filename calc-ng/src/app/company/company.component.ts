@@ -26,10 +26,10 @@ export class CompanyComponent implements OnInit {
   //employees: any[];
   errorMessage: string;
  // isLoading: boolean = true;
+ public breakpoint: number; // Breakpoint observer code
 
   constructor(private companyService: CompanyService, public fb: FormBuilder) {
-    this.addingCompany= fb.group({
-      
+    this.addingCompany= fb.group({  
     "company_name": [''],
     "vacation_days": [''],
     "sick_days": [''],
@@ -39,12 +39,13 @@ export class CompanyComponent implements OnInit {
     "effective_days": [''],
     "expected_profit": [''],
    })
-    console.log("are they called (companies)?");
+    //console.log("are they called (companies)?");
     //this.init();
    }
 
   //employeesObservable: Observable<Employee[]>;
   async ngOnInit() {
+    this.breakpoint = window.innerWidth <= 600 ? 1 : 2;
     // this.getEmployees().subscribe( employees => {
     //   this.employees = employees;
     // });
@@ -69,18 +70,18 @@ export class CompanyComponent implements OnInit {
         
         .subscribe(
           data2 => {
-            console.log(data2)
+            //console.log(data2)
             this.companies = data2;
            // data = this.employees;
             // this.employees = data;
-            console.log(data2[0].company_name);
+            //console.log(data2[0].company_name);
             
            
             //position: (employees as any).position
             //this.isLoading = false
           },
           error => {
-            console.log("ok")
+           // console.log("ok")
             this.errorMessage = <any>error
            // this.isLoading = false
           }
@@ -89,7 +90,7 @@ export class CompanyComponent implements OnInit {
 
 
   addCompany() {
-    console.log(this.addingCompany.value);
+    //(this.addingCompany.value);
     this.companyService
     .addCompany(this.addingCompany.value)
     .subscribe(company => 
@@ -109,10 +110,9 @@ export class CompanyComponent implements OnInit {
     this.addingCompany.controls["billability_year"].setValue(this.addingCompany.value["billability_year"]);
   
   
-  
+   
   }
 
 
-
-
+ 
 }

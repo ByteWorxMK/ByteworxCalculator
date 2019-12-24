@@ -75,10 +75,12 @@ export class RegisterComponent implements OnInit {
    // console.log(this.loginForm.value);
     this.userService
     .addUser(this.registerForm.value)
-    .subscribe(user => 
-      console.log("THIS" + user))
+    .subscribe(user => {
+      //console.log("THIS" + user))
+    })
+  }
       //this.employees.push(employee)
       
-  }
+  
 
 }

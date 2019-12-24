@@ -15,8 +15,8 @@ class CreateEmployeeTable extends Migration
     {
         Schema::create('employee', function (Blueprint $table) {
             $table->bigIncrements('id');
-          //  $table->string('position');
-           // $table->string('role');
+            $table->string('position');
+            $table->string('role');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('net');
@@ -31,7 +31,7 @@ class CreateEmployeeTable extends Migration
             $table->string('othercosts');
             $table->string('companycostperyear');
             $table->string('companycostpermonth');
-          //  $table->string('image');
+            
             $table->string('c1');
             $table->string('c2');
             $table->string('c3');
@@ -40,6 +40,7 @@ class CreateEmployeeTable extends Migration
             $table->string('p2');
             $table->string('p3');
             $table->string('p4');
+            $table->string('image');
             $table->timestamps();
         });
     }

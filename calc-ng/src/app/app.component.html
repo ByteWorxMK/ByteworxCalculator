@@ -33,37 +33,46 @@
       </div>
   </section>
 </div> -->
-<nav>
-  <div class="navbar-header">
-    <a href="#" class="navbar-brand">Calculator</a>
-  </div>
-  <button href="#" class="btn btn-primary navbar-brand" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/employees']">Employees</button> 
-  <button href="#" class="btn btn-primary navbar-brand"  routerLinkActive="active" [routerLink]="['/companies']">Company</button> 
-  <button href="#" class="btn btn-primary navbar-brand"  routerLinkActive="active" [routerLink]="['/login']" *ngIf="!authGuard.isLogged">Login</button> 
-  <button href="#" class="btn btn-primary navbar-brand"  routerLinkActive="active" (click)="authGuard.logout()" [routerLink]="['/login']" *ngIf="authGuard.isLogged" >Logout</button> 
 
-</nav>
-
-<h3>Welcome </h3>
-<hr>
-<div>
-  <div class="row">
-    <div class="col-md-12">
-      
-      <router-outlet></router-outlet>
-      <!-- <lib-pedzos-first-library></lib-pedzos-first-library>
-       <app-header (menuSelected)="onNavigate($event)"></app-header>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <app-employee *ngIf="loadedFeature === 'employees'"></app-employee>
-      <app-company *ngIf="loadedFeature !== 'employees'"></app-company>
+<nav class="navbar navbar-inverse navbar-light bg-light">
+    <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="header-logo navbar-nav">
+        <a href="#" class="navbar-brand">
+            <object type="image/svg+xml" id="svg-resize" data="/assets/Without-Slogan-Color-2.svg"></object>
+        </a>
+      </div>
     </div>
-  </div>
-</div> -->
-
+      <div class="nav navbar-nav nav-horizontal">
+        <button href="#" class="btn btn-primary navbar-brand" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" routerLink="/employees" >Employees</button> <!--[routerLink]="['/employees']"-->
+        <button href="#" class="btn btn-primary navbar-brand"  routerLinkActive="active" routerLink="/companies" >Company</button>  <!-- [routerLink]="['/companies']"-->
+        <button href="#" class="btn btn-primary navbar-brand"  routerLinkActive="active" routerLink="/login" *ngIf="!authGuard.isLogged" >Login</button>  <!-- [routerLink]="['/login']" *ngIf="!authGuard.isLogged"-->
+        <button href="#" class="btn btn-primary navbar-brand"  routerLinkActive="active"  routerLink="/login" *ngIf="authGuard.isLogged"  (click)="authGuard.logout()" >Logout</button> <!-- [routerLink]="['/login']"--> <!-- *ngIf="authGuard.isLogged"  (click)="authGuard.logout()"-->
+      </div>
     
-     
+    </div>
+    
+  </nav>
+
+
+<div class="">
+    <div class="row">
+      <div class="col-12">
+        
+        <router-outlet></router-outlet>
+        <!-- <lib-pedzos-first-library></lib-pedzos-first-library>
+         <app-header (menuSelected)="onNavigate($event)"></app-header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <app-employee *ngIf="loadedFeature === 'employees'"></app-employee>
+        <app-company *ngIf="loadedFeature !== 'employees'"></app-company>
+      </div>
+    </div>
+  </div> -->
+  
+      
+       
+      </div>
     </div>
   </div>
-</div>

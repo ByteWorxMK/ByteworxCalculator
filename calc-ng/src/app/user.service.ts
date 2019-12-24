@@ -5,6 +5,8 @@ import { throwError ,Observable, from } from 'rxjs';
 // import { map } from "rxjs/operators";
 import { tap, catchError, map} from 'rxjs/operators';
 
+import { environment } from '../environments/environment'
+
 
 export interface User {
   name: String,
@@ -13,7 +15,8 @@ export interface User {
 }
 
 
-const API_URL: string = 'http://localhost:8000';
+
+const API_URL= environment.a_url;
 
 
 
@@ -49,7 +52,7 @@ export class UserService {
   }
 
   getUsers(): Observable<any>{
-    console.log("test-users")
+    //console.log("test-users")
      return this.http.post<any>(API_URL + '/api/details',
      httpOptions)
      .pipe(map(result=>result.data));

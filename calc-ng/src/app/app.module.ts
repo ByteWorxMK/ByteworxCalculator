@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -26,16 +26,26 @@ import { Login2Component } from './login2/login2.component';
 import { AuthGuard } from './_guards/auth.guard';
 //import { LoginComponent } from './login/login.component';
 import { NgxCurrencyModule } from "ngx-currency";
+import { EmployeeService } from './employee.service';
+import { CompanyService } from './company.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+import { MAT_DATE_LOCALE } from '@angular/material';
+import { DemoMaterialModule } from './material-module';
+
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'companies', component: CompanyComponent },
-  { path: 'employees', component: EmployeeComponent },
+  { path: 'companies', component: CompanyComponent, canActivate: [AuthGuard] },
+  { path: 'employees', component: EmployeeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: Login2Component},
   { path: 'register', component: RegisterComponent },
   //{ path: '**', redirectTo: '', pathMatch: 'full' }
 ];
+
+@Injectable()
 
 @NgModule({
   declarations: [
@@ -52,6 +62,7 @@ const routes: Routes = [
     EmployeeDetailComponent,
     RegisterComponent,
     Login2Component,
+    
    
   ],
   imports: [
@@ -62,9 +73,12 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     NgxCurrencyModule,
+    BrowserAnimationsModule,
+    DemoMaterialModule
+    
     
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, EmployeeService, CompanyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

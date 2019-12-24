@@ -55,7 +55,7 @@ Route::get('/employee', 'EmployeeController2@index');
 Route::get('/employee/{id}', 'EmployeeController2@show');
 Route::post('/employee', 'EmployeeController2@store');
 Route::post('/employee/{id}/answers', 'EmployeeController2@answer');
-Route::delete('/employee/{id}', 'EmployeeController2@delete');
+Route::delete('/employee/{first_name}', 'EmployeeController2@delete');
 Route::delete('/employee/{id}/answers', 'EmployeeController2@resetAnswers');
 
 

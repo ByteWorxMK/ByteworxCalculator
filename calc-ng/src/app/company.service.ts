@@ -150,9 +150,11 @@ export class CompanyService /* implements Employee*/{
     //console.log("test-add")
     return this.http.post<any>(API_URL + '/api/company_index', company).pipe(
     tap(data => {
-      return data//console.log(data);
+      return data;//console.log(data);
      
     }));
   }
+
+  
 
 }

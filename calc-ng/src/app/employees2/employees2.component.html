@@ -3,10 +3,10 @@
 </p>
 
 <div>
-  <span class="help is-info" *ngIf="isLoading">Loading...</span>
-  <span class="help is-error" *ngIf="errorMessage">{{ errorMessage }}</span>
+  <span class="help is-info">Loading...</span> <!-- *ngIf="!isLoading && !errorMessage" -->
+  <span class="help is-error"></span> <!-- *ngIf="!isLoading && !errorMessage"-->
   
-  <table class="table" *ngIf="!isLoading && !errorMessage">
+  <table class="table"> <!--  *ngIf="!isLoading && !errorMessage" -->
       <thead>
           <tr>
             <!-- <th width="30%">Image</th> -->
@@ -277,16 +277,16 @@
 
 
           
-          <div class="dropdown btn-group" >
+          <!-- <div class="dropdown btn-group" >
             <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" [ngClass]="{'show': isShow}" (click)="onToggle()" > <!-- aria-haspopup="true" aria-expanded="false"   -->
-              Manage Employee
+             <!-- Manage Employee
             </button>
             <div class="dropdown-menu "  aria-labelledby="dropdownMenuButton" [ngClass]="{'show': isShow}" > 
               <a class="dropdown-item" href="#">Edit</a>
               <a class="dropdown-item" href="#">Delete</a>
               
             </div>
-          </div>
+          </div> -->
 
           <!-- <div class="btn-group" appDropdown>
               <button type="button" class="btn btn-primary dropdown-toggle"> Manage</button>

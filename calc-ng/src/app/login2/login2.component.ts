@@ -41,9 +41,9 @@ export class Login2Component implements OnInit {
     this.user = new User();
     this.user.email = this.login2Form.controls['email'].value;
     this.user.password = this.login2Form.controls['password'].value;
-    console.log(this.user);
+    //console.log(this.user);
     this.userService.Login(this.user).subscribe(data => {
-      console.log("This is data: " + data);
+     // console.log("This is data: " + data);
         if(data != 0)
         {
           //localStorage.setItem('currentUser',"DAREEE");

@@ -20,7 +20,7 @@ export class Employees2Component implements OnInit {
  // isLoading: boolean = true;
 
   constructor(private employeeService: EmployeeService) {
-    console.log("are they called ok?");
+    //console.log("are they called ok?");
     //this.init();
    }
 
@@ -52,7 +52,7 @@ export class Employees2Component implements OnInit {
             this.employees = data;
            // data = this.employees;
             // this.employees = data;
-            console.log(data);
+           // console.log(data);
             
            
             //position: (employees as any).position

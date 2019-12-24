@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
-          <input
+          <input 
             type="text"
             id="name"
             class="form-control"
@@ -12,7 +12,7 @@
         </div>
         <div class="col-sm-2 form-group">
           <label for="amount">Amount</label>
-          <input
+          <input 
             type="number"
             id="amount"
             class="form-control"
@@ -30,9 +30,11 @@
   </div>
 </div> -->
 
-
-<div id="formModal1"  role="dialog">
-    <div class="modal-dialog">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal1">
+  Add employee
+</button>
+<div id="formModal1" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
      <div class="modal-content" [formGroup]="addingEmployee">
       <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -44,8 +46,8 @@
             <!-- <div class="form-group">
              <label class="control-label col-md-8" >Position : </label>
              <div class="col-md-8">
-             <input type="radio" name="position" value="operative" #positionInput checked> Operative<br>
-             <input type="radio" name="position" value="administrative" #positionInput> Administrative<br>
+             <input  type="radio" name="position" value="operative" #positionInput checked> Operative<br>
+             <input  type="radio" name="position" value="administrative" #positionInput> Administrative<br>
            </div>
            </div>
            <div class="form-group">
@@ -83,156 +85,175 @@
 
 
            <div class="form-group">
-            <label class="control-label col-md-8" >First Name : </label>
+            <label class="control-label col-md-8" >Position : </label>
             <div class="col-md-8">
-             <input type="text" name="first_name" id="first_name" class="form-control" [formControl]="addingEmployee.controls['first_name']" />
+             <input  type="text" name="position" id="position" class="form-control" [formControl]="addingEmployee.controls['position']" />
             </div>
            </div>
-           <li *ngFor="let hero of heroes" (click)="onSelect(hero)"></li>
+           <div class="form-group">
+            <label class="control-label col-md-8" >Role : </label>
+            <div class="col-md-8">
+             <input  type="text" name="role" id="role" class="form-control" [formControl]="addingEmployee.controls['role']" />
+            </div>
+           </div>
              <div class="form-group">
                <label class="control-label col-md-8" >First Name : </label>
                <div class="col-md-8">
-                <input type="text" name="first_name" id="first_name" class="form-control" [formControl]="addingEmployee.controls['first_name']" />
+                <input  type="text" name="first_name" id="first_name" class="form-control" [formControl]="addingEmployee.controls['first_name']" />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Last Name : </label>
                <div class="col-md-8">
-                <input type="text" name="last_name" id="last_name" class="form-control" [formControl]="addingEmployee.controls['last_name']" />
+                <input  type="text" name="last_name" id="last_name" class="form-control" [formControl]="addingEmployee.controls['last_name']" />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Net Salary: </label>
                <div class="col-md-8">
-                <input currencyMask type="number"   name="net" id="net" class="form-control" [formControl]="addingEmployee.controls['net']" [options]="{ prefix: '$ ', thousands: '.', decimal: ',' }" />
+                <input   type="number"   name="net" id="net" class="form-control" [formControl]="addingEmployee.controls['net']" />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Brutto Salary: </label>
                <div class="col-md-8">
-                <input currencyMask type="number"  name="brutto" id="brutto" class="form-control" [formControl]="addingEmployee.controls['brutto']" (change)="calc()" [options]="{ prefix: '$ ', thousands: '.', decimal: ',' }"/>
+                <input   type="number"  name="brutto" id="brutto" class="form-control" [formControl]="addingEmployee.controls['brutto']" (change)="calc()" />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Neto yearly Salary: </label>
                <div class="col-md-8">
-                <input type="number" name="yearlynet" id="yearlynet" class="form-control" [formControl]="addingEmployee.controls['yearlynet']"  />
+                <input  type="number" name="yearlynet" id="yearlynet" class="form-control" [formControl]="addingEmployee.controls['yearlynet']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Brutto yearly Salary: </label>
                <div class="col-md-8">
-                <input type="number" name="yearlybrut" id="yearlybrut" class="form-control" [formControl]="addingEmployee.controls['yearlybrut']" />
+                <input  type="number" name="yearlybrut" id="yearlybrut" class="form-control" [formControl]="addingEmployee.controls['yearlybrut']" />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">socialcostmonth: </label>
                <div class="col-md-8">
-                <input type="number" name="socialcostmonth" id="socialcostmonth" class="form-control" [formControl]="addingEmployee.controls['socialcostmonth']"  />
+                <input  type="number" name="socialcostmonth" id="socialcostmonth" class="form-control" [formControl]="addingEmployee.controls['socialcostmonth']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">socialcostyear: </label>
                <div class="col-md-8">
-                <input type="number" name="socialcostyear" id="socialcostyear" class="form-control" [formControl]="addingEmployee.controls['socialcostyear']"  />
+                <input  type="number" name="socialcostyear" id="socialcostyear" class="form-control" [formControl]="addingEmployee.controls['socialcostyear']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Administrative: </label>
                <div class="col-md-8">
-                <input type="number" name="administrative" id="administrative" class="form-control" [formControl]="addingEmployee.controls['administrative']"  />
+                <input  type="number" name="administrative" id="administrative" class="form-control" [formControl]="addingEmployee.controls['administrative']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Expenses: </label>
                <div class="col-md-8">
-                <input type="number" name="expenses" id="expenses" class="form-control"  [formControl]="addingEmployee.controls['expenses']"  />
+                <input  type="number" name="expenses" id="expenses" class="form-control"  [formControl]="addingEmployee.controls['expenses']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Hardware: </label>
                <div class="col-md-8">
-                <input type="number" name="hardware" id="hardware" class="form-control" [formControl]="addingEmployee.controls['hardware']" (change)="calc2()" />
+                <input  type="number" name="hardware" id="hardware" class="form-control" [formControl]="addingEmployee.controls['hardware']" (change)="calc2()" />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">othercosts: </label>
                <div class="col-md-8">
-                <input type="number" name="othercosts" id="othercosts" class="form-control"  [formControl]="addingEmployee.controls['othercosts']"  />
+                <input  type="number" name="othercosts" id="othercosts" class="form-control"  [formControl]="addingEmployee.controls['othercosts']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">companycostperyear </label>
                <div class="col-md-8">
-                <input type="number" name="companycostperyear" id="companycostperyear" class="form-control" [formControl]="addingEmployee.controls['companycostperyear']"  />
+                <input  type="number" name="companycostperyear" id="companycostperyear" class="form-control" [formControl]="addingEmployee.controls['companycostperyear']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">companycostpermonth </label>
                <div class="col-md-8">
-                <input type="number" name="companycostpermonth" id="companycostpermonth" class="form-control"  [formControl]="addingEmployee.controls['companycostpermonth']"  />
+                <input  type="number" name="companycostpermonth" id="companycostpermonth" class="form-control"  [formControl]="addingEmployee.controls['companycostpermonth']"  />
                </div>
               </div>
               <!-- <div class="form-group">
                <label class="control-label col-md-8">Select Profile Image : </label>
                <div class="col-md-8">
-                <input type="file" name="image" id="image" />
+                <input  type="file" name="image" id="image" />
                 <span id="store_image"></span>
                </div>
               </div> -->
               <div class="form-group">
                <label class="control-label col-md-8">Effective cost per hour: </label>
                <div class="col-md-8">
-                <input type="number" name="c1" id="c1" class="form-control" [formControl]="addingEmployee.controls['c1']"  />
+                <input  type="number" name="c1" id="c1" class="form-control" [formControl]="addingEmployee.controls['c1']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Effective cost per day </label>
                <div class="col-md-8">
-                <input type="number" name="c2" id="c2" class="form-control" [formControl]="addingEmployee.controls['c2']"  />
+                <input  type="number" name="c2" id="c2" class="form-control" [formControl]="addingEmployee.controls['c2']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Effective cost per month: </label>
                <div class="col-md-8">
-                <input type="number" name="c3" id="c3" class="form-control" [formControl]="addingEmployee.controls['c3']" />
+                <input  type="number" name="c3" id="c3" class="form-control" [formControl]="addingEmployee.controls['c3']" />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Effective cost per year: </label>
                <div class="col-md-8">
-                <input type="number" name="c4" id="c4" class="form-control" [formControl]="addingEmployee.controls['c4']"  />
+                <input  type="number" name="c4" id="c4" class="form-control" [formControl]="addingEmployee.controls['c4']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Min price per hour: </label>
                <div class="col-md-8">
-                <input type="number" name="p1" id="p1" class="form-control" [formControl]="addingEmployee.controls['p1']"  />
+                <input  type="number" name="p1" id="p1" class="form-control" [formControl]="addingEmployee.controls['p1']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Min price per day: </label>
                <div class="col-md-8">
-                <input type="number" name="p2" id="p2" class="form-control" [formControl]="addingEmployee.controls['p2']" />
+                <input  type="number" name="p2" id="p2" class="form-control" [formControl]="addingEmployee.controls['p2']" />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Min price per month: </label>
                <div class="col-md-8">
-                <input type="number" name="p3" id="p3" class="form-control"  [formControl]="addingEmployee.controls['p3']"  />
+                <input  type="number" name="p3" id="p3" class="form-control"  [formControl]="addingEmployee.controls['p3']"  />
                </div>
               </div>
               <div class="form-group">
                <label class="control-label col-md-8">Min price per year: </label>
                <div class="col-md-8">
-                <input type="number" name="p4" id="p4" class="form-control" [formControl]="addingEmployee.controls['p4']"  />
+                <input  type="number" name="p4" id="p4" class="form-control" [formControl]="addingEmployee.controls['p4']"  />
                </div>
               </div>
+              <div class="form-group">
+                <label class="control-label col-md-8">Select profile photo</label>
+                <div class="col-md-8">
+                 <input #imageInput type="file" name="image" id="image" class="form-control" [formControl]="addingEmployee.controls['image']" (change)="fileProgress($event)" />
+                </div>
+                <div *ngIf="fileUploadProgress">
+                  Upload progress: {{ fileUploadProgress }}
+              </div>
+              <div class="image-preview mb-3" *ngIf="previewUrl">
+                <img [src]="previewUrl" height="300" />                 
+            </div>
+ 
+            
+               </div>
               <br />
               <div class="form-group" align="center">
-               <input type="hidden" name="action" id="action" />
-               <input type="hidden" name="hidden_id" id="hidden_id" />
-               <!-- <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add" /> -->
+               <input  type="hidden" name="action" id="action" />
+               <input  type="hidden" name="hidden_id" id="hidden_id" />
+               <!-- <input  type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add" /> -->
                <button appHighlighting class="btn" type="submit" (click)="addEmployees()">Add</button>
               </div>
             </form>

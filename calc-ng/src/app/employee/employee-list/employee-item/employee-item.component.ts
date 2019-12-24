@@ -6,6 +6,8 @@ import { EmployeeEditComponent } from '../employee-edit/employee-edit.component'
 import { FormGroup, FormBuilder, NgSelectOption } from '@angular/forms';
 import { EmployeeListComponent } from '../employee-list.component';
 
+import { DomSanitizer } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee-item',
@@ -21,6 +23,13 @@ export class EmployeeItemComponent implements OnInit {
 
 
   editingEmployee: FormGroup;
+
+  fileData:File =null;
+  previewUrl:any = null;
+  fileUploadProgress: string = null;
+  uploadedFilePath: string = null;
+
+  imgsrc : any;
 
   // @ViewChild('positionInput') positionInputRef: ElementRef;  //{ static: false }
   // @ViewChild('roleInput') roleInputRef: ElementRef;
@@ -51,8 +60,10 @@ export class EmployeeItemComponent implements OnInit {
   // @Output() employeeAdded = new EventEmitter<Employee>();
 
 
-  constructor(private emoloyeeService: EmployeeService, private edit: EmployeeEditComponent, private fb:FormBuilder, private list: EmployeeListComponent) {
+  constructor(private emoloyeeService: EmployeeService, private edit: EmployeeEditComponent, private fb:FormBuilder, private list: EmployeeListComponent, private _sanitizer: DomSanitizer, private http: HttpClient) {
     this.editingEmployee= fb.group({
+      "position": [''],
+      "role": [''],
       "first_name": [''],
     "last_name": [''],
     "net": [''],
@@ -67,7 +78,7 @@ export class EmployeeItemComponent implements OnInit {
     "othercosts": [''],
     "companycostperyear": [''],
     "companycostpermonth": [''],
-   // image": [''],
+    
     "c1": [''],
     "c2": [''],
     "c3": [''],
@@ -76,15 +87,55 @@ export class EmployeeItemComponent implements OnInit {
     "p2": [''],
     "p3": [''],
     "p4": [''],
+    "image": [''],
    })
+   
    }
 
   ngOnInit() {
+    //console.log(Image);
+    //console.log("Ovde e slikata demek" , this.employeesItem);
+    //this.http.get("assets/slika.txt", { responseType: 'text' })
+    //.subscribe(data => {
+      //console.log("WHAT THE SHIT E OVA? ",this.employeesItem.image);
+    // this.imgsrc = this._sanitizer.bypassSecurityTrustResourceUrl(this.employeesItem.image);
+    //})
+  }
+
+  // readUrl(event:any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     var reader = new FileReader();
+  
+  //     reader.onload = (event: ProgressEvent) => {
+  //       this.employeesItem.image = (<FileReader>event.target).result;
+  //     }
+  
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
+  // }
+
+  public fileProgress(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+    this.preview();
+  }
+
+  public preview() {
+    // Show preview 
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+ 
+    var reader = new FileReader();      
+    reader.readAsDataURL(this.fileData); 
+    reader.onload = (_event) => { 
+      this.previewUrl = reader.result; 
+    }
   }
 
   onSelected() {
     this.employeeSelected.emit();
-    console.log(this.employeesItem)
+    //console.log(this.employeesItem)
     return false;
     //console.log(this.employeesItem);
     

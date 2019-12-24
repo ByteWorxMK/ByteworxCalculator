@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  a_url:'http://localhost:8000/',
+  a_url:'http://calculator.5437083574555.hostingkunde.de',
   production: false
 };
 

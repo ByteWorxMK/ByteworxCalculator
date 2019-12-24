@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Injectable } from '@angular/core';
 import { Employee } from '../employee.model';
 import { EmployeeService } from '../../employee.service';
+
+
 
 @Component({
   selector: 'app-employee-list',
@@ -41,7 +43,7 @@ export class EmployeeListComponent implements OnInit {
  // isLoading: boolean = true;
 
   constructor(private employeeService: EmployeeService) {
-    console.log("are they called?");
+   // console.log("are they called?");
     //this.init();
    }
 
@@ -70,10 +72,11 @@ export class EmployeeListComponent implements OnInit {
         .subscribe(
           data => {
             
+
             this.employees = data;
            // data = this.employees;
             // this.employees = data;
-            console.log(data);
+           // console.log(data);
             
            
             //position: (employees as any).position

@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Employee } from './employee.model';
 import { EmployeeService } from '../employee.service';
 
 import { UserService } from '../user.service';
 import { User } from '../user.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
+// import { TestBed } from '@angular/core/testing';
+
+@Injectable()
 
 @Component({
   selector: 'app-employee',
@@ -62,7 +65,8 @@ export class EmployeeComponent implements OnInit {
             this.employees = data;
            // data = this.employees;
             // this.employees = data;
-            console.log(data);
+            //console.log("test test TestBed2222", data)
+            //console.log(data);
             
            
             //position: (employees as any).position

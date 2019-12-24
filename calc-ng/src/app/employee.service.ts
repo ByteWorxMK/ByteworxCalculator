@@ -7,6 +7,8 @@ import { throwError ,Observable, from } from 'rxjs';
 // import { map } from "rxjs/operators";
 import { tap, catchError, map} from 'rxjs/operators';
 
+import { environment } from '../environments/environment'
+
 
 
 export interface Employee {
@@ -43,7 +45,7 @@ interface Test {
   rezultati: Employee[];
 }
 
-const API_URL: string = 'http://localhost:8000';
+const API_URL= environment.a_url;
 
 
 const httpOptions = {
@@ -90,7 +92,7 @@ export class EmployeeService /* implements Employee*/{
   private employees: Employee[];
 
   constructor(private http: HttpClient, /*employeeData:any*/) { 
-    console.log("are they called?2");
+    //console.log("are they called?2");
       // this.id = employeeData.id,
       // this.position= employeeData.position,
       // this.role= employeeData.role,
@@ -138,7 +140,7 @@ export class EmployeeService /* implements Employee*/{
   }
 
   getEmployees(): Observable<any>{
-   console.log("testh")
+   //console.log("testh")
     return this.http.get<any>(API_URL + '/api/employee', httpOptions)
     .pipe(map(result=>result.data));
     //.pipe(map(data=> this.data || []));
@@ -183,6 +185,7 @@ export class EmployeeService /* implements Employee*/{
    addEmployee( employee: any ) {
     // employee.id=null;
     //console.log("test-add")
+    //console.log(employee);
     return this.http.post<any>(API_URL + '/api/employee', employee).pipe(
     tap(data => {
       return console.log(data);
@@ -225,7 +228,7 @@ export class EmployeeService /* implements Employee*/{
   }
 
   deleteEmployee(id){
-    return this.http.delete<Employee>(API_URL + '/employees/' + id)
+    return this.http.delete<any>(API_URL + '/employees/' + id)
     .pipe(
      
       catchError(this.handleError)

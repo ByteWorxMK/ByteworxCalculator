@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades;
+use File;
 
 use Illuminate\Http\Request;
 use App\Employee;
@@ -30,6 +32,7 @@ class EmployeeController extends Controller
                     ->make(true);
                     
         }
+        
         return view('employee_index');
     }
 
@@ -53,8 +56,8 @@ class EmployeeController extends Controller
     {
         //
         $rules = array(
-          //  'position'            =>  'required',
-         //   'role'                =>  'required',
+            'position'            =>  'required',
+            'role'                =>  'required',
             'first_name'          =>  'required',
             'last_name'           =>  'required',
             'net'                 =>  'required',
@@ -69,7 +72,7 @@ class EmployeeController extends Controller
             'othercosts'          =>  'required',
             'companycostperyear'  =>  'required',
             'companycostpermonth' =>  'required',
-          //  'image'               =>  'image|max:2048',
+            'image'               =>  'required',
             'c1'                  =>  'required',
             'c2'                  =>  'required',
             'c3'                  =>  'required',
@@ -88,16 +91,20 @@ class EmployeeController extends Controller
         {
             return response()->json(['errors' => $error->errors()->all()]);
         }
+        //base64_encode($image);
+        //$image = $request->file('image');
+        $new_image_data = $request->image;
+        $new_name = rand(); //. '.' . $image->getClientOriginalExtension();
 
-        $image = $request->file('image');
+        //$image->move(public_path('images'), $new_name);
 
-        $new_name = rand() . '.' . $image->getClientOriginalExtension();
-
-        $image->move(public_path('images'), $new_name);
+        File::put('C:/xampp/htdocs/firstApp/public/tekstovi/'.$new_name.'.txt', $new_image_data);
+        $new_name = $new_name.'.txt';
+       // $new_name2 =  base64_encode(file_get_contents($image));
 
         $form_data = array(
-         //   'position'              =>  $request->position,
-         //   'role'                  =>  $request->role,
+            'position'              =>  $request->position,
+            'role'                  =>  $request->role,
             'first_name'            =>  $request->first_name,
             'last_name'             =>  $request->last_name,
             'net'                   =>  $request->net,
@@ -112,7 +119,7 @@ class EmployeeController extends Controller
             'othercosts'            =>  $request->othercosts,
             'companycostperyear'    =>  $request->companycostperyear,
             'companycostpermonth'   =>  $request->companycostpermonth,
-          //  'image'                 =>  $new_name,
+            'image'                 =>  $new_name,
             'c1'                    =>  $request->c1,
             'c2'                    =>  $request->c2,
             'c3'                    =>  $request->c3,
@@ -126,7 +133,10 @@ class EmployeeController extends Controller
         Employee::create($form_data);
 
         return response()->json(['success' => 'Data Added successfully.']);
-    
+       // base64_encode($new_name);
+
+       
+       //echo $image;
     }
 
     /**
@@ -171,8 +181,8 @@ class EmployeeController extends Controller
         if($image != '')
         {
             $rules = array(
-              //  'position'            =>  'required',
-              //  'role'                =>  'required',
+                'position'            =>  'required',
+                'role'                =>  'required',
                 'first_name'          =>  'required',
                 'last_name'           =>  'required',
                 'net'                 =>  'required',
@@ -187,7 +197,7 @@ class EmployeeController extends Controller
                 'othercosts'          =>  'required',
                 'companycostperyear'  =>  'required',
                 'companycostpermonth' =>  'required',
-              //  'image'               =>  'image|max:2048',
+                'image'               =>  'required',
                 'c1'                  =>  'required',
                 'c2'                  =>  'required',
                 'c3'                  =>  'required',
@@ -202,15 +212,15 @@ class EmployeeController extends Controller
             {
                 return response()->json(['errors' => $error->errors()->all()]);
             }
-
+           // base64_encode($image_name);
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('images'), $image_name);
         }
         else
         {
             $rules = array(
-              //  'position'            =>  'required',
-              //  'role'                =>  'required',
+                'position'            =>  'required',
+                'role'                =>  'required',
                 'first_name'          =>  'required',
                 'last_name'           =>  'required',
                 'net'                 =>  'required',
@@ -225,7 +235,7 @@ class EmployeeController extends Controller
                 'othercosts'          =>  'required',
                 'companycostperyear'  =>  'required',
                 'companycostpermonth' =>  'required',
-              //  'image'               =>  'image|max:2048',
+                'image'               =>  'required',
                 'c1'                  =>  'required',
                 'c2'                  =>  'required',
                 'c3'                  =>  'required',
@@ -245,8 +255,8 @@ class EmployeeController extends Controller
         }
 
         $form_data = array(
-           // 'position'              =>  $request->position,
-         //   'role'                  =>  $request->role,
+            'position'              =>  $request->position,
+            'role'                  =>  $request->role,
             'first_name'            =>  $request->first_name,
             'last_name'             =>  $request->last_name,
             'net'                   =>  $request->net,
@@ -261,7 +271,7 @@ class EmployeeController extends Controller
             'othercosts'            =>  $request->othercosts,
             'companycostperyear'    =>  $request->companycostperyear,
             'companycostpermonth'   =>  $request->companycostpermonth,
-         //   'image'                 =>  $image_name,
+            'image'                 =>  $image_name,
             'c1'                    =>  $request->c1,
             'c2'                    =>  $request->c2,
             'c3'                    =>  $request->c3,

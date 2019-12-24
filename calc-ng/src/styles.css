@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.page-header {
+    text-align: center;
+    padding: 60px 50px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd; 
+}
+.page-header-inner {
+    text-align: center;
+    padding: 30px 15px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd; 
+    margin-bottom:30px;
+}
+
+    
+    
+#svg-resize {
+    width: 70%;
+    padding: 10px 40px;
+}
+
+/* .header-logo, .header-buttons {
+    width: 50%;
+    position: relative;
+    float: left;
+    
+} */
+.nav-horizontal {
+    flex-direction: row !important;
+}
